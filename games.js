@@ -81,6 +81,18 @@ window.GAMES = [
     ],
   },
   {
+    id: 'apocalypse', repo: 'office-apocalypse', cover: 'apocalypse',
+    title: '上班啟示錄', en: 'OFFICE APOCALYPSE',
+    genre: '3D 經營', badge: '新作', accent: '#ffb23f', accent2: '#e86a8f',
+    platform: ['手機直式', '電腦'],
+    tagline: '新人小葵報到第一天，什麼雜事都要做：煮咖啡、印文件、補貨、接電話，把破爛茶水間一路升級成產線。',
+    how: [
+      '拖曳畫面移動，把做好的咖啡、文件背去櫃台賣，再去綠框收錢',
+      '踩金色格子升級設施、白色格子開新區域、粉紅格子請同事幫忙',
+      '每季業績達標發獎金，全年達標辦尾牙，小葵從實習生升到總監',
+    ],
+  },
+  {
     id: 'banxiu', repo: 'banxiu-game', cover: 'banxiu',
     title: '上班修仙傳', en: 'OFFICE CULTIVATION',
     genre: '放置修仙', badge: 'v2.1', accent: '#e8c56a', accent2: '#3fbf9f',
