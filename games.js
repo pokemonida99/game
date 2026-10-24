@@ -17,6 +17,7 @@ window.GAMES = [
     machines: [
       { name: '無印・關都', kind: '柏青哥', path: 'kanto/', poke: 25, c: '#e3350d' },
       { name: '金・銀・城都', kind: '大輪盤柏青哥', path: 'johto/', poke: 249, c: '#c9a227' },
+      { name: '金・銀・城都 TV 版', kind: '電視・閨蜜機大螢幕', path: 'tv/', poke: 250, c: '#c9a227' },
       { name: '紅藍寶石・豐緣', kind: '彈珠台', path: 'hoenn/', poke: 384, c: '#2d9c6b' },
       { name: '鑽石珍珠・神奧', kind: '推幣機', path: 'sinnoh/', poke: 448, c: '#4a6cd4' },
       { name: '黑・白・合眾', kind: '彈珠打磚', path: 'unova/', poke: 643, c: '#6b6b7b' },
