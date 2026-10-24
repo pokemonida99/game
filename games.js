@@ -83,13 +83,38 @@ window.GAMES = [
   {
     id: 'apocalypse', repo: 'office-apocalypse', cover: 'apocalypse',
     title: '上班啟示錄', en: 'OFFICE APOCALYPSE',
-    genre: '3D 經營', badge: '新作', accent: '#ffb23f', accent2: '#e86a8f',
+    genre: '3D 經營', badge: 'v0.6', accent: '#ffb23f', accent2: '#e86a8f',
     platform: ['手機直式', '電腦'],
     tagline: '新人小葵報到第一天，什麼雜事都要做：煮咖啡、印文件、補貨、接電話，把破爛茶水間一路升級成產線。',
     how: [
       '拖曳畫面移動，把做好的咖啡、文件背去櫃台賣，再去綠框收錢',
       '踩金色格子升級設施、白色格子開新區域、粉紅格子請同事幫忙',
       '每季業績達標發獎金，全年達標辦尾牙，小葵從實習生升到總監',
+    ],
+  },
+  {
+    id: 'hoops', repo: 'office-basketball', cover: 'hoops',
+    title: '下班先鬥牛', en: 'AFTER-WORK HOOPS',
+    genre: '3D 籃球', badge: '新作', accent: '#ff6a1a', accent2: '#ffd23f',
+    platform: ['手機直式／橫式', '電腦'],
+    tagline: '《上班啟示錄》番外。上班族、香香籃球隊、山頂國小隊在頂樓或廟口球場打半場鬥牛，每個人都有自己的大招。',
+    how: [
+      '11 位角色挑 1～3 人組隊，1v1、2v2、3v3 都能打，2 分鐘或先到 21 分贏',
+      '同一顆鍵攻守自動切換：按住投籃、綠區放開最準，招式接投籃可以連招',
+      '不會玩先進教學關卡，練習場可以自己練投或一打一',
+    ],
+    note: '友情參戰：香香籃球隊・山頂國小',
+  },
+  {
+    id: 'runner', repo: 'office-sidescroller', cover: 'runner',
+    title: '打卡衝衝衝', en: 'CLOCK-IN DASH',
+    genre: '橫向跑酷', badge: '新作', accent: '#ff8a3d', accent2: '#4fc3f7',
+    platform: ['手機', '電腦'],
+    tagline: '《上班啟示錄》番外。小葵 08:59 快遲到了，一路往右衝上樓打卡，別被踩 AI 平衡車的 Kevin 抓去開會。',
+    how: [
+      '只有兩個動作：點右半邊跳（空中再點二段跳）、點左半邊滑壘',
+      '跳過紙箱和咖啡、滑過「這個用AI就好了」紅布條，桌子可以跳上去跑',
+      '每 240 公尺一個打卡鐘，大廳、辦公區、茶水間、老闆樓層越跑越快',
     ],
   },
   {
