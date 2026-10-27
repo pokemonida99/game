@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>遊戲入口｜AI 製作・網頁遊戲作品展</title>
-<meta name="description" content="跟 AI 一起做的網頁遊戲作品展：寶可夢彈珠研究所、黃泉燒肉店轉珠、紅分子亮車快打……點了就能玩，不用下載、不用登入。">
+<meta name="description" content="跟 AI 一起做的網頁遊戲作品展：寶可夢彈珠研究所、上班啟示錄、山頂國小、黃泉燒肉店、紅分子……點了就能玩，不用下載、不用登入。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="遊戲入口｜AI 製作・網頁遊戲作品展">
-<meta property="og:description" content="12 款跟 AI 一起做的網頁遊戲，點了就能玩，手機電腦都可以。">
+<meta property="og:description" content="17 款跟 AI 一起做的網頁遊戲，點了就能玩，手機電腦都可以。">
 <meta property="og:image" content="https://pokemonida99.github.io/game/img/og.jpg">
 <meta property="og:url" content="https://pokemonida99.github.io/game/">
 <meta name="twitter:card" content="summary_large_image">
@@ -124,9 +124,6 @@ section.block{padding:clamp(70px,10vw,120px) 0 0}
 .cover .play i::before{content:"";border-left:7px solid #14101f;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
 .cover:hover .play,.cover:focus-visible .play{opacity:1;transform:none}
 @media (hover:none){.cover .play{opacity:1;transform:none}}
-.rank{position:absolute;top:16px;left:16px;font-family:var(--pixel);font-size:10px;letter-spacing:1px;color:var(--a);padding:8px 10px 7px;border-radius:10px;
-  background:rgba(7,6,13,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid color-mix(in srgb,var(--a) 45%,transparent);pointer-events:none}
-.rank::before{content:"No.";color:var(--dim);margin-right:4px}
 
 /* ── 主打：寶可夢大整合 ── */
 .hub{--a:#ffcb05;position:relative;border-radius:calc(var(--r) + 8px);padding:clamp(10px,1.4vw,14px);
@@ -156,24 +153,43 @@ section.block{padding:clamp(70px,10vw,120px) 0 0}
 @media (max-width:640px){.hub .cover{aspect-ratio:4/5}.hub .cover img.art{object-position:40% 50%}.sprites img:not(.pika){display:none}.sprites .pika{width:46%;right:2%;bottom:auto;top:18%}}
 @media (max-width:520px){.mc.wide{grid-column:auto}.machines{grid-template-columns:1fr 1fr}.mc{padding:8px}.mc img{width:38px;height:38px}}
 
-/* ── 主打：大版面左右交錯 ── */
-.feat{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(56px,8vw,96px)}
-.feat:nth-child(odd) .cover{order:2}
-.feat .cover{aspect-ratio:3/2}
-.feat .info h3{font-size:clamp(30px,3.6vw,46px);font-weight:900;line-height:1.15;margin:14px 0 4px}
-.feat .info .en{font-family:var(--pixel);font-size:10px;letter-spacing:2px;color:var(--a)}
-.feat .info .tl{color:#d6d1e8;font-size:clamp(15px,1.4vw,17px);margin-top:12px}
 .acts{display:flex;gap:10px;flex-wrap:wrap}
-@media (max-width:900px){.feat{grid-template-columns:1fr}.feat:nth-child(odd) .cover{order:0}}
 
-/* ── 全部作品格子 ── */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:clamp(18px,2.4vw,28px)}
+/* ── 系列目錄（捲動時黏在導覽列下面） ── */
+.shelf{position:sticky;top:58px;z-index:40;margin:0 calc(var(--pad) * -1);padding:12px var(--pad);
+  background:rgba(7,6,13,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.shelf .row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.shelf .row::-webkit-scrollbar{display:none}
+.chip{--a:#fff;flex:none;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 12px;border-radius:999px;font-size:14px;font-weight:700;color:#e9e5f7;
+  border:1px solid var(--line2);background:rgba(255,255,255,.03);transition:.2s;white-space:nowrap}
+.chip i{width:8px;height:8px;background:var(--a);box-shadow:0 0 10px var(--a);transform:rotate(45deg)}
+.chip small{font-family:var(--pixel);font-size:9px;color:var(--mute)}
+.chip:hover,.chip.on{border-color:var(--a);color:#fff;background:color-mix(in srgb,var(--a) 14%,transparent)}
+.chip.on small{color:var(--a)}
+
+/* ── 系列區塊 ── */
+.series{padding-top:clamp(56px,8vw,96px);scroll-margin-top:120px}
+.s-head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:12px 24px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.s-head .no{font-family:var(--pixel);font-size:clamp(28px,4vw,44px);color:var(--a);line-height:1;text-shadow:0 0 24px color-mix(in srgb,var(--a) 60%,transparent)}
+.s-head .eyebrow{font-family:var(--pixel);font-size:9px;letter-spacing:3px;color:var(--a);margin-bottom:10px}
+.s-head h2{font-size:clamp(28px,3.6vw,42px);font-weight:900;line-height:1.15}
+.s-head p{color:var(--dim);font-size:15px;max-width:620px;margin-top:6px}
+.s-head .cnt{font-size:13px;color:var(--dim);white-space:nowrap;padding:6px 12px;border-radius:999px;border:1px solid var(--line2)}
+.s-head .also{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:13px;font-weight:700;color:var(--a);border-bottom:1px dashed currentColor}
+@media (max-width:640px){.s-head{grid-template-columns:auto 1fr}.s-head .cnt{display:none}}
+
+/* ── 作品卡片 ── */
+.grid{display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));gap:clamp(18px,2.4vw,28px)}
+@media (max-width:1020px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:680px){.grid{grid-template-columns:1fr}}
 .card{display:flex;flex-direction:column;border-radius:calc(var(--r) + 4px);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border:1px solid var(--line);padding:10px;transition:border-color .3s,background .3s}
 .card:hover{border-color:color-mix(in srgb,var(--a) 45%,transparent);background:linear-gradient(180deg,color-mix(in srgb,var(--a) 10%,transparent),rgba(255,255,255,.015))}
-.card .cover{aspect-ratio:3/2}
-.card .cover .ttl h3{font-size:clamp(22px,2.2vw,28px)}
+.card .cover{aspect-ratio:40/21}
+.card .cover .shade{background:linear-gradient(180deg,transparent 70%,rgba(7,6,13,.45) 100%)}
 .card .body{padding:18px 12px 10px;display:flex;flex-direction:column;flex:1}
-.card .tl{color:#d6d1e8;font-size:15px;margin-top:14px}
+.card h3{font-size:clamp(22px,2vw,26px);font-weight:900;line-height:1.2;margin-top:14px}
+.card .en{font-family:var(--pixel);font-size:9px;letter-spacing:2px;color:var(--a);margin-top:8px}
+.card .tl{color:#d6d1e8;font-size:15px;margin-top:12px}
 .card .how{margin:14px 0 20px}
 .card .how li{font-size:14px;color:var(--dim)}
 .card .acts{margin-top:auto}
@@ -213,8 +229,7 @@ footer a{color:var(--dim)}footer a:hover{color:#fff}
 <nav class="nav" id="nav">
   <a class="logo" href="#top"><i></i>GAME</a>
   <div class="links">
-    <a href="#featured">主打作品</a>
-    <a href="#all">全部作品</a>
+    <a href="#games">全部作品</a>
     <a href="#making">怎麼做的</a>
     <a class="gh" href="https://github.com/pokemonida99" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
@@ -230,34 +245,25 @@ footer a{color:var(--dim)}footer a:hover{color:#fff}
       <p class="sub"><b>AI 製作</b>・網頁遊戲作品展</p>
       <p class="lead">這裡每一款遊戲的程式、美術、配樂和演出影片，都是跟 AI 一起做出來的。點了就能玩，不用下載、不用登入，手機電腦都可以。</p>
       <div class="stats">
-        <div class="stat"><b id="nGames">12</b><span>款作品</span></div>
+        <div class="stat"><b id="nGames">17</b><span>款作品</span></div>
+        <div class="stat"><b id="nSeries">6</b><span>個系列</span></div>
         <div class="stat"><b>13</b><span>台寶可夢機台</span></div>
         <div class="stat"><b>0</b><span>秒安裝</span></div>
       </div>
-      <a class="cta" href="#featured">開始逛
+      <a class="cta" href="#games">開始逛
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v11M3 8.5 8 13.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </header>
 
-  <section class="block" id="featured">
+  <section class="block" id="games">
     <div class="wrap">
       <div class="head rv">
-        <div><div class="eyebrow">FEATURED</div><h2>主打作品</h2></div>
-        <p>先從這三款開始。寶可夢那一台其實是一整座遊樂場，裡面有 13 台機台。</p>
+        <div><div class="eyebrow">SERIES</div><h2>依系列逛</h2></div>
+        <p>同一批角色的作品放在一起。每款都有「怎麼玩」，看完就能上手。</p>
       </div>
-      <div id="hub"></div>
-      <div id="feats"></div>
-    </div>
-  </section>
-
-  <section class="block" id="all">
-    <div class="wrap">
-      <div class="head rv">
-        <div><div class="eyebrow">MORE GAMES</div><h2>更多作品</h2></div>
-        <p>依完成度排列：越前面內容越完整。每款都有「怎麼玩」，看完就能上手。</p>
-      </div>
-      <div class="grid" id="grid"></div>
+      <div class="shelf"><div class="row" id="shelf"></div></div>
+      <div id="series"></div>
     </div>
   </section>
 
@@ -297,7 +303,7 @@ footer a{color:var(--dim)}footer a:hover{color:#fff}
 (() => {
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const G = window.GAMES;
+  const G = window.GAMES, SER = window.SERIES;
   const vars = g => `--a:${g.accent};--b:${g.accent2}`;
   const ext = 'target="_blank" rel="noopener"';
   const tags = g => `<div class="tags"><span class="tag a">${esc(g.genre)}</span><span class="tag">${esc(g.badge)}</span>${g.note ? `<span class="tag o">${esc(g.note)}</span>` : ''}${g.platform.map(p => `<span class="tag o">${esc(p)}</span>`).join('')}</div>`;
@@ -307,13 +313,12 @@ footer a{color:var(--dim)}footer a:hover{color:#fff}
     <a class="cover" href="${g.url}" ${ext} aria-label="玩 ${esc(g.title)}">
       <img class="art" src="img/cover/${g.cover}.webp" alt="${esc(g.title)} 封面" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async">
       ${extra}<span class="shade"></span>
-      <span class="rank">${String(i + 1).padStart(2, '0')}</span>
       <span class="play"><i></i>開始玩</span>
       ${withTitle ? `<span class="ttl"><div class="en">${esc(g.en)}</div><h3>${esc(g.title)}</h3>${withTitle === 'tl' ? `<p>${esc(g.tagline)}</p>` : ''}</span>` : ''}
     </a>`;
 
   // 寶可夢大整合
-  const hub = G.find(g => g.feature === 'hub');
+  const hub = G.find(g => g.hub);
   const pokeSprites = `<span class="sprites">
       <img src="img/poke/n249.webp" alt="" style="right:31%;top:9%;width:min(11%,130px);--rot:-6deg;animation-delay:-1s">
       <img src="img/poke/n384.webp" alt="" style="right:22%;top:3%;width:min(10%,120px);--rot:5deg;animation-delay:-2.4s">
@@ -321,8 +326,8 @@ footer a{color:var(--dim)}footer a:hover{color:#fff}
       <img src="img/poke/n133.webp" alt="" style="right:2%;top:12%;width:min(9%,110px);--rot:-4deg;animation-delay:-.6s">
       <img class="pika" src="img/poke/pikachu.webp" alt="">
     </span>`;
-  $('#hub').innerHTML = `<article class="hub rv" style="${vars(hub)}">
-    ${cover(hub, 0, 'tl', pokeSprites)}
+  const hubHtml = () => `<article class="hub rv" style="${vars(hub)}">
+    ${cover(hub, G.indexOf(hub), 'tl', pokeSprites)}
     <div class="hub-body">
       <div>${tags(hub)}${how(hub)}${acts(hub)}</div>
       <div class="machines">
@@ -333,20 +338,43 @@ footer a{color:var(--dim)}footer a:hover{color:#fff}
     </div>
   </article>`;
 
-  // 另外兩款主打
-  const feats = G.filter(g => g.feature === true);
-  $('#feats').innerHTML = feats.map((g, k) => `<article class="feat rv" style="${vars(g)}">
-    ${cover(g, k + 1, false)}
-    <div class="info">${tags(g)}<h3>${esc(g.title)}</h3><div class="en">${esc(g.en)}</div><p class="tl">${esc(g.tagline)}</p>${how(g)}${acts(g)}</div>
-  </article>`).join('');
+  // 一般作品卡：標題放在卡片內文（有些封面圖本身就有標題字）
+  const card = g => `<article class="card rv" style="${vars(g)}">
+    ${cover(g, G.indexOf(g), false)}
+    <div class="body">${tags(g)}<h3>${esc(g.title)}</h3><div class="en">${esc(g.en)}</div><p class="tl">${esc(g.tagline)}</p>${how(g)}${acts(g)}</div>
+  </article>`;
 
-  // 其餘作品
-  const rest = G.filter(g => !g.feature);
-  $('#grid').innerHTML = rest.map((g, k) => `<article class="card rv" style="${vars(g)}">
-    ${cover(g, k + 1 + feats.length)}
-    <div class="body">${tags(g)}<p class="tl">${esc(g.tagline)}</p>${how(g)}${acts(g)}</div>
-  </article>`).join('');
+  // 依系列分區；寶可夢那區算機台數（看 badge），其他算幾款
+  const amount = (games, short) => games[0].hub ? (short ? games[0].badge.replace('機台', '') : games[0].badge) : games.length + ' 款';
+  const groups = SER.map(s => ({ s, games: G.filter(g => g.series === s.id) })).filter(x => x.games.length);
+  $('#shelf').innerHTML = groups.map(({ s, games }) =>
+    `<a class="chip" href="#s-${s.id}" style="--a:${s.accent}" data-s="${s.id}"><i></i>${esc(s.name)}<small>${amount(games, true)}</small></a>`).join('');
+  $('#series').innerHTML = groups.map(({ s, games }, k) => {
+    const also = s.also && G.find(g => g.id === s.also.game);
+    const n = games.length, cols = n % 3 === 0 ? 3 : 2;
+    return `<section class="series" id="s-${s.id}" style="--a:${s.accent}">
+      <header class="s-head rv">
+        <div class="no">${String(k + 1).padStart(2, '0')}</div>
+        <div><div class="eyebrow">${esc(s.en)}</div><h2>${esc(s.name)}</h2><p>${esc(s.blurb)}</p>
+          ${also ? `<a class="also" href="${also.url}" ${ext}>${esc(s.also.label)} ↗</a>` : ''}</div>
+        <span class="cnt">${amount(games)}</span>
+      </header>
+      ${games.map(g => g.hub ? hubHtml() : '').join('')}
+      ${games.some(g => !g.hub) ? `<div class="grid" style="--cols:${cols}">${games.filter(g => !g.hub).map(card).join('')}</div>` : ''}
+    </section>`;
+  }).join('');
   $('#nGames').textContent = G.length;
+  $('#nSeries').textContent = groups.length;
+
+  // 系列目錄：標出目前看到的系列
+  const chips = [...document.querySelectorAll('.chip')];
+  const seen = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    chips.forEach(c => c.classList.toggle('on', c.dataset.s === e.target.id.slice(2)));
+    const on = chips.find(c => c.classList.contains('on'));
+    if (on) on.parentNode.scrollTo({ left: on.offsetLeft - 24, behavior: 'smooth' });
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('.series').forEach(el => seen.observe(el));
 
   // 捲動進場
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
