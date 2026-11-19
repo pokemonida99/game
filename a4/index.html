@@ -7,146 +7,239 @@
 <meta name="description" content="a4 不想上班的網頁遊戲：上班啟示錄、下班先鬥牛、上班旅人、放置辦公室……點了就能玩，不用下載、不用登入。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="不想上班 遊戲入口｜a4 不想上班">
-<meta property="og:description" content="小葵、阿傑、小米、Vivi 老闆和 Kevin 的上班族遊戲，點了就能玩，手機電腦都可以。">
+<meta property="og:description" content="今天也沒辭成，先玩一局。小葵、阿傑、小米、Vivi 老闆和 Kevin 的上班族遊戲，手機電腦都能玩。">
 <meta property="og:image" content="https://pokemonida99.github.io/game/a4/og.jpg">
 <meta property="og:url" content="https://pokemonida99.github.io/game/a4/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#efeadf">
+<meta name="theme-color" content="#f2eee3">
 <link rel="icon" href="../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800&family=LXGW+WenKai+TC:wght@700&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/kui.webp">
 <style>
-/* 藝術方向：A4 影印紙＋公文＋人事章。紙白、墨黑、印泥紅、螢光筆黃；硬邊、不用漸層與大圓角 */
+/* 藝術方向：《下班玩家》遊戲特刊（GPT 提案方向一）
+   暖白紙、深墨、鈷藍、螢光黃、朱橘；粗網點、錯版印刷、手寫旁批、角色貼紙拼貼。不用漸層、大圓角、柔和陰影、emoji */
 :root{
-  --paper:#efeadf; --sheet:#fbf9f3; --ink:#17150f; --ink2:#4a463c; --mute:#857f70; --rule:#d9d2c2;
-  --red:#cf2a1d; --hi:#ffe14a; --blue:#1f3a8a;
-  --pad:clamp(16px,4vw,40px); --max:1180px;
-  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --paper:#f2eee3; --ink:#20231f; --ink2:#4b4e47; --blue:#244ddb; --yellow:#e8f044; --red:#ee593b; --sage:#879180; --white:#fffdf7;
+  --pad:clamp(16px,4vw,44px); --max:1240px;
+  --cond:'Barlow Condensed','Noto Sans TC',sans-serif; --hand:'LXGW WenKai TC','Noto Sans TC',serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'Noto Sans TC',system-ui,-apple-system,'PingFang TC',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.27  0 0 0 0 0.2  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{background:var(--paper) url(img/paper.jpg) repeat;background-size:512px;color:var(--ink);font-family:'Noto Sans TC',system-ui,-apple-system,'PingFang TC',sans-serif;font-weight:500;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-::selection{background:var(--hi)}
+::selection{background:var(--yellow)}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-.mono{font-family:var(--mono)}
-mark{background:linear-gradient(transparent 55%,var(--hi) 55%);color:inherit;padding:0 .1em}
+.cond{font-family:var(--cond);font-weight:800;letter-spacing:.02em}
+.hand{font-family:var(--hand);font-weight:700}
+/* 塗鴉：PNG 當遮罩，顏色用 background 換 */
+.dd{display:block;background:var(--c,var(--ink));-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;pointer-events:none}
 
-/* ── 頂端：公文抬頭 ── */
-.top{border-bottom:2px solid var(--ink);background:var(--sheet)}
-.top .wrap{display:flex;align-items:center;gap:16px;height:56px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.04em}
-.brand b{display:grid;place-items:center;width:30px;height:30px;border:2px solid var(--red);color:var(--red);font-family:var(--mono);font-size:13px;transform:rotate(-6deg)}
-.top nav{margin-left:auto;display:flex;gap:4px}
-.top nav a{font-size:14px;font-weight:700;padding:6px 10px;border:1px solid transparent}
-.top nav a:hover{border-color:var(--ink)}
-@media (max-width:560px){.top nav a.opt{display:none}}
+/* ── 刊頭 ── */
+.strip{border-bottom:2px solid var(--ink);font-family:var(--cond);font-weight:800;font-size:13px;letter-spacing:.12em}
+.strip .wrap{display:flex;justify-content:space-between;gap:12px;height:30px;align-items:center}
+.strip .r{color:var(--ink2)}
+.mast .wrap{display:flex;align-items:center;gap:clamp(12px,2vw,24px);padding-top:14px;padding-bottom:14px;border-bottom:4px solid var(--ink)}
+.logo{display:flex;align-items:center;gap:14px}
+.logo b{font-size:clamp(34px,4.6vw,58px);font-weight:900;line-height:1;letter-spacing:-.01em;text-shadow:3px 2px 0 var(--yellow);animation:misreg 6s steps(1) infinite}
+@keyframes misreg{0%,100%{text-shadow:3px 2px 0 var(--yellow)}48%{text-shadow:-2px 3px 0 var(--yellow)}52%{text-shadow:4px -1px 0 var(--yellow)}}
+.logo span{border-left:3px solid var(--ink);padding-left:12px;font-family:var(--cond);font-weight:800;font-size:clamp(13px,1.4vw,17px);line-height:1.05;letter-spacing:.04em}
+.mast nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.mast nav a{font-weight:700;font-size:15px;padding:6px 10px;position:relative}
+.mast nav a::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.mast nav a:hover::after{transform:scaleX(1)}
+.mast nav a.box{border:2px solid var(--ink);padding:6px 14px;box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.mast nav a.box::after{display:none}
+.mast nav a.box:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+@media (max-width:760px){.mast nav a:not(.box){display:none}.logo span{display:none}.strip .r{display:none}}
 
 /* ── 首屏 ── */
-.hero{padding:clamp(40px,7vw,80px) 0 clamp(28px,5vw,48px)}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:end}
-.kicker{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--red)}
-.hero h1{font-size:clamp(56px,10vw,128px);font-weight:900;line-height:.95;letter-spacing:-.02em;margin-top:14px;position:relative;display:inline-block}
-.hero h1 small{display:block;font-size:.36em;letter-spacing:.02em;margin-top:.25em}
-.seal{position:absolute;right:-.7em;top:-.35em;width:1.05em;height:1.05em;border:5px solid var(--red);border-radius:50%;color:var(--red);
-  display:grid;place-items:center;font-family:var(--mono);font-size:.42em;font-weight:700;transform:rotate(14deg);opacity:.88;mix-blend-mode:multiply}
-.hero .lead{margin-top:22px;font-size:clamp(16px,1.6vw,18px);color:var(--ink2);max-width:560px}
-.memo{background:var(--sheet);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px 20px;font-size:14px}
-.memo h2{font-size:13px;font-family:var(--mono);letter-spacing:.2em;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:6px}
-.memo dl{display:grid;grid-template-columns:auto 1fr;gap:0}
-.memo dt,.memo dd{padding:8px 0;border-bottom:1px dashed var(--rule)}
-.memo dt{font-weight:700;padding-right:16px;color:var(--ink2)}
-.memo dd{font-weight:500}
-.memo dl > :nth-last-child(-n+2){border-bottom:0}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.seal{right:-.55em}}
+.hero{overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(8px,3vw,40px);align-items:center;padding-top:clamp(20px,4vw,40px);padding-bottom:clamp(20px,4vw,36px)}
+.flag{display:inline-block;background:var(--yellow);font-weight:900;font-size:clamp(15px,1.6vw,19px);padding:4px 12px;transform:rotate(-2deg);box-shadow:3px 3px 0 var(--ink)}
+.hero h1{font-size:clamp(46px,7.2vw,104px);font-weight:900;line-height:1.02;letter-spacing:-.03em;margin:18px 0 0}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln > span{display:inline-block;transform:translateY(110%);animation:rise .8s cubic-bezier(.2,.9,.2,1) forwards}
+.hero h1 .ln:nth-child(2) > span{animation-delay:.12s}
+.hero h1 .ln:nth-child(3) > span{animation-delay:.24s}
+.hero h1 em{font-style:normal;color:var(--blue)}
+@keyframes rise{to{transform:none}}
+.hero .en{font-family:var(--cond);font-weight:800;font-size:clamp(16px,1.6vw,20px);letter-spacing:.14em;margin-top:14px}
+.hero .sub{margin-top:8px;font-weight:700;color:var(--ink2)}
+.cta{display:inline-flex;align-items:center;gap:12px;margin-top:22px;background:var(--blue);color:var(--white);font-weight:900;font-size:18px;padding:14px 24px;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.cta:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.cta i{display:block;width:22px;height:14px;--m:url(img/dd_arrow.png);background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;transition:transform .2s}
+.cta:hover i{transform:translateX(5px)}
+
+/* 拼貼：所有位置用百分比，手機電腦等比縮放 */
+.collage{position:relative;aspect-ratio:1/0.92;width:100%;isolation:isolate}
+.collage > *{position:absolute}
+.sky{left:14%;top:-2%;width:86%;opacity:.95;will-change:transform}
+.dots{left:24%;top:6%;width:62%;aspect-ratio:1;border-radius:50%;z-index:0;
+  background:radial-gradient(circle,var(--yellow) 42%,transparent 46%) 0 0/14px 14px;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.band{left:-6%;right:-4%;bottom:14%;height:15%;background:var(--red);transform:rotate(-8deg);z-index:1;
+  background-image:radial-gradient(circle,rgba(32,35,31,.18) 30%,transparent 34%);background-size:9px 9px}
+.cut{z-index:3;height:auto;filter:drop-shadow(5px 6px 0 rgba(32,35,31,.85));will-change:transform}
+.cut img{width:100%;height:auto;animation:bob var(--dur,4s) ease-in-out infinite;animation-delay:var(--dl,0s);transform-origin:50% 100%}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r0,-1.5deg))}50%{transform:translateY(-3.5%) rotate(var(--r1,1.5deg))}}
+.cut{opacity:0;animation:pop .7s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--in,0s)}
+@keyframes pop{from{opacity:0;transform:translateY(18%) scale(.7)}to{opacity:1;transform:none}}
+.c-jie{left:11%;bottom:16%;width:29%;z-index:2;--dur:4.6s;--in:.35s}
+.c-kevin{left:-5%;bottom:30%;width:25%;z-index:1;--dur:5.2s;--dl:-1s;--in:.5s;--r0:1deg;--r1:-1deg}
+.c-vivi{right:15%;bottom:30%;width:27%;z-index:2;--dur:4.2s;--dl:-2s;--in:.45s}
+.c-mi{right:-2%;bottom:10%;width:27%;z-index:3;--dur:3.6s;--dl:-.6s;--in:.6s;--r0:2deg;--r1:-2deg}
+.c-kui{left:33%;bottom:-2%;width:36%;z-index:4;--dur:3.2s;--in:.2s}
+.note{z-index:6;font-family:var(--hand);font-weight:700;color:var(--ink);font-size:clamp(17px,2vw,26px);line-height:1.15;transform:rotate(-10deg)}
+.n1{right:4%;top:2%}
+.collage .dd{z-index:5}
+.d-arrow{right:8%;top:16%;width:12%;aspect-ratio:436/292;--m:url(img/dd_arrow_curve.png);--c:var(--ink);transform:scaleX(-1) rotate(20deg)}
+.d-spark{left:28%;top:16%;width:12%;aspect-ratio:1;--m:url(img/dd_spark.png);--c:var(--red);animation:pulse 1.6s steps(2) infinite}
+.d-bang{left:62%;top:26%;width:7%;aspect-ratio:199/219;--m:url(img/dd_bang.png);--c:var(--red);animation:wig .5s steps(2) infinite}
+.d-star{left:2%;top:14%;width:9%;aspect-ratio:1;--m:url(img/dd_star.png);--c:var(--blue);animation:wig 1.2s steps(2) infinite}
+@keyframes pulse{50%{transform:scale(1.18) rotate(8deg)}}
+@keyframes wig{50%{transform:rotate(-8deg) translateY(-3px)}}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .collage{order:-1;margin:0 auto;width:94%;max-width:560px}
+  .c-kevin{left:-2%}
+  .hero h1{margin-top:12px}
+}
+
+/* ── 跑馬燈 ── */
+.ticker{background:var(--ink);color:var(--yellow);border-block:3px solid var(--ink);overflow:hidden;white-space:nowrap;position:relative;z-index:2}
+.ticker .run{display:inline-flex;gap:0;animation:marquee 38s linear infinite;padding:9px 0}
+.ticker span{font-weight:900;font-size:17px;padding:0 18px;display:inline-flex;align-items:center;gap:18px}
+.ticker span::after{content:"";width:14px;height:14px;background:var(--red);-webkit-mask:url(img/dd_star.png) center/contain no-repeat;mask:url(img/dd_star.png) center/contain no-repeat}
+.ticker:hover .run{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
 /* ── 區塊標題 ── */
-.sec{padding:clamp(40px,6vw,72px) 0 0}
-.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:28px}
-.sec-h h2{font-size:clamp(26px,3.4vw,38px);font-weight:900;line-height:1.15}
-.sec-h h2 .mono{display:block;font-size:12px;letter-spacing:.2em;color:var(--red);margin-bottom:6px}
-.sec-h p{color:var(--ink2);font-size:14px;max-width:460px}
+.sec{padding:clamp(44px,7vw,84px) 0 0}
+.bar{display:flex;align-items:center;gap:14px 24px;flex-wrap:wrap;background:var(--ink);color:var(--white);padding:10px 16px;margin-bottom:clamp(24px,4vw,40px);box-shadow:6px 6px 0 var(--yellow)}
+.bar h2{font-size:clamp(20px,2.6vw,28px);font-weight:900;line-height:1.2}
+.bar h2 .cond{color:var(--yellow);font-size:.85em;margin-left:8px}
+.bar p{margin-left:auto;font-size:14px;color:#d9d6cc}
+.bar p b{color:var(--yellow)}
 
-/* ── 共用：封面、標籤、按鈕 ── */
-.cover{position:relative;display:block;aspect-ratio:40/21;overflow:hidden;background:var(--ink);border:2px solid var(--ink)}
-.cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.cover:hover img{transform:scale(1.04)}
-.stamp{position:absolute;left:12px;top:12px;z-index:2;padding:4px 10px;border:3px solid var(--red);color:var(--red);background:rgba(251,249,243,.9);
-  font-weight:900;font-size:15px;letter-spacing:.12em;transform:rotate(-5deg);box-shadow:2px 2px 0 rgba(0,0,0,.25)}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-size:12px;font-weight:700;padding:2px 8px;border:1px solid var(--ink);background:var(--sheet);white-space:nowrap}
-.tag.k{background:var(--ink);color:var(--sheet)}
-.tag.v{font-family:var(--mono);font-weight:500}
-.tag.r{border-color:var(--red);color:var(--red)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 20px;background:var(--ink);color:var(--sheet);font-weight:900;font-size:15px;
-  border:2px solid var(--ink);box-shadow:4px 4px 0 var(--red);transition:transform .12s,box-shadow .12s}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
-.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--red)}
-.btn .mono{font-size:12px;opacity:.7}
-.how{list-style:none;display:grid;gap:6px;margin:14px 0 18px;counter-reset:h}
-.how li{position:relative;padding-left:28px;font-size:14.5px;color:var(--ink2)}
-.how li::before{counter-increment:h;content:counter(h);position:absolute;left:0;top:.18em;width:19px;height:19px;border:1.5px solid var(--ink);
-  font-family:var(--mono);font-size:11px;font-weight:700;display:grid;place-items:center;color:var(--ink)}
+/* ── 排行共用 ── */
+.num{font-family:var(--cond);font-weight:800;font-style:italic;line-height:.8;letter-spacing:-.04em;color:var(--nc,var(--blue));text-shadow:4px 3px 0 var(--ns,var(--yellow))}
+.cover{position:relative;display:block;aspect-ratio:40/21;overflow:hidden;background:var(--ink);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+.cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+a.cover:hover{transform:translate(-3px,-3px) rotate(-.6deg);box-shadow:10px 10px 0 var(--ink)}
+a.cover:hover img{transform:scale(1.05)}
+.wip{position:absolute;right:10px;top:10px;z-index:2;background:var(--red);color:var(--white);font-weight:900;font-size:clamp(13px,1.4vw,16px);padding:4px 12px;border:2px solid var(--ink);transform:rotate(4deg);animation:nag 3s ease-in-out infinite}
+@keyframes nag{0%,86%,100%{transform:rotate(4deg)}89%{transform:rotate(-3deg) scale(1.08)}92%{transform:rotate(6deg) scale(1.08)}95%{transform:rotate(1deg)}}
+.chip{display:inline-block;font-size:12.5px;font-weight:900;padding:2px 9px;background:var(--blue);color:var(--white)}
+.chip.y{background:var(--yellow);color:var(--ink)}
+.chip.r{background:var(--red);color:var(--white)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.meta small{font-size:12.5px;color:var(--ink2);font-weight:700}
+.side{font-family:var(--hand);font-weight:700;color:var(--red);font-size:clamp(17px,1.8vw,21px);line-height:1.2;display:inline-block;transform:rotate(-3deg)}
+.side::before{content:"";display:inline-block;width:1.1em;height:.7em;margin-right:.3em;background:currentColor;-webkit-mask:url(img/dd_arrow.png) center/contain no-repeat;mask:url(img/dd_arrow.png) center/contain no-repeat;vertical-align:.05em}
+.play{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:15px;padding:9px 16px;border:2px solid var(--ink);background:var(--white);box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s,background .12s}
+.play:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);background:var(--yellow)}
+.play:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.play i{display:block;width:18px;height:12px;background:currentColor;-webkit-mask:url(img/dd_arrow.png) center/contain no-repeat;mask:url(img/dd_arrow.png) center/contain no-repeat}
+details.how{margin-top:12px}
+details.how summary{cursor:pointer;font-weight:900;font-size:14px;list-style:none;display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid var(--ink)}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";font-family:var(--cond);font-size:18px;line-height:1;transition:transform .2s}
+details.how[open] summary::after{transform:rotate(45deg)}
+details.how ol{margin:10px 0 0 1.2em;display:grid;gap:4px;font-size:14.5px;color:var(--ink2)}
 
-/* ── 工時排行：前三名大列 ── */
-.rank-big{display:grid;gap:clamp(28px,4vw,44px)}
-.row{display:grid;grid-template-columns:auto minmax(0,1.25fr) minmax(0,1fr);gap:clamp(16px,2.6vw,32px);align-items:start;
-  background:var(--sheet);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:clamp(14px,2vw,22px)}
-.no{font-family:var(--mono);font-weight:700;font-size:clamp(40px,5vw,64px);line-height:.9;letter-spacing:-.04em}
-.no small{display:block;font-size:11px;letter-spacing:.2em;color:var(--mute);margin-bottom:6px;font-weight:500}
-.row h3{font-size:clamp(26px,3vw,36px);font-weight:900;line-height:1.15;margin-top:12px}
-.en{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--mute);margin-top:4px}
-.tl{margin-top:12px;font-size:15.5px}
-@media (max-width:900px){.row{grid-template-columns:auto minmax(0,1fr)}.row .info{grid-column:1/-1}}
-@media (max-width:520px){.row{grid-template-columns:1fr}.row .no{font-size:36px}}
+/* 進場：數字錯版滑入、其他往上 */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv .num{transform:translateX(-40px);opacity:0;transition:transform .6s cubic-bezier(.2,1.4,.4,1) .1s,opacity .4s .1s,text-shadow .6s .1s;text-shadow:16px 10px 0 var(--ns,var(--yellow))}
+.rv.in .num{transform:none;opacity:1;text-shadow:4px 3px 0 var(--ns,var(--yellow))}
 
-/* ── 工時排行：第四名以後 ── */
-.rank-small{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,28px);margin-top:clamp(36px,5vw,56px)}
-.card{display:flex;flex-direction:column;background:var(--sheet);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:12px}
-.card .head{display:flex;align-items:baseline;gap:10px;margin-top:12px}
-.card .no{font-size:28px}
-.card h3{font-size:21px;font-weight:900;line-height:1.2}
-.card .tags{margin-top:10px}
-.card .tl{font-size:14.5px}
-.card .btn{margin-top:auto}
-@media (max-width:980px){.rank-small{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:620px){.rank-small{grid-template-columns:1fr}}
+/* ── 前三名 ── */
+.top3{display:grid;gap:clamp(40px,6vw,72px)}
+.big{display:grid;grid-template-columns:auto minmax(0,1.2fr) minmax(0,1fr);gap:clamp(14px,2.6vw,34px);align-items:center}
+.big .num{font-size:clamp(110px,15vw,210px)}
+.big h3{font-size:clamp(30px,3.6vw,46px);font-weight:900;line-height:1.1;margin:12px 0 4px}
+.big .en{font-family:var(--cond);font-weight:800;letter-spacing:.14em;font-size:14px;color:var(--ink2)}
+.big .tl{margin-top:12px;font-size:16px}
+.big .acts{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+.big:nth-child(2){grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) auto}
+.big:nth-child(2) .num{order:3}
+.big:nth-child(2) .info{order:1;text-align:right}
+.big:nth-child(2) .info .meta,.big:nth-child(2) .acts{justify-content:flex-end}
+.big:nth-child(2) .cover{order:2}
+.big:nth-child(1){--nc:var(--blue);--ns:var(--yellow)}
+.big:nth-child(2){--nc:var(--ink);--ns:var(--red)}
+.big:nth-child(3){--nc:var(--red);--ns:var(--blue)}
+@media (max-width:900px){
+  .big,.big:nth-child(2){grid-template-columns:auto minmax(0,1fr)}
+  .big .num,.big:nth-child(2) .num{order:0;font-size:clamp(84px,22vw,140px)}
+  .big:nth-child(2) .cover{order:1}
+  .big .info,.big:nth-child(2) .info{grid-column:1/-1;order:2;text-align:left}
+  .big:nth-child(2) .info .meta,.big:nth-child(2) .acts{justify-content:flex-start}
+}
 
-/* ── 其他部門 ── */
-.depts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,28px);align-items:start}
-.dept{border:2px solid var(--ink);background:var(--sheet)}
-.dept > header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:2px solid var(--ink);background:var(--d)}
-.dept > header h3{font-size:18px;font-weight:900;color:#fff}
-.dept > header span{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.8);letter-spacing:.12em}
-.dept p.d{font-size:13.5px;color:var(--ink2);padding:12px 14px 0}
-.mini{display:grid;grid-template-columns:44% minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border-bottom:1px dashed var(--rule)}
-.mini:last-child{border-bottom:0}
-.mini .cover{border-width:1.5px}
-.mini b{display:block;font-size:16px;font-weight:900;line-height:1.3}
-.mini small{display:block;font-size:12.5px;color:var(--ink2);margin:2px 0 6px}
-.mini .go{font-size:13px;font-weight:900;border-bottom:2px solid var(--ink)}
-.mini:hover .go{color:var(--red);border-color:var(--red)}
-@media (max-width:900px){.depts{grid-template-columns:1fr}}
+/* ── 第四名起 ── */
+.rest{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,4vw,48px) clamp(20px,3vw,40px);margin-top:clamp(56px,8vw,96px);padding-top:clamp(24px,3vw,32px);border-top:4px solid var(--ink)}
+.sm{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:start}
+.sm .num{font-size:clamp(70px,8vw,104px);grid-row:span 2}
+.sm:nth-child(4n+1){--nc:var(--blue);--ns:var(--yellow)}
+.sm:nth-child(4n+2){--nc:var(--ink);--ns:var(--red)}
+.sm:nth-child(4n+3){--nc:var(--red);--ns:var(--blue)}
+.sm:nth-child(4n+4){--nc:var(--sage);--ns:var(--ink)}
+.sm h3{font-size:clamp(21px,2.2vw,26px);font-weight:900;line-height:1.2;margin-top:12px}
+.sm .tl{font-size:14.5px;margin-top:6px;color:var(--ink2)}
+.sm .acts{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+.sm .body{grid-column:2}
+@media (max-width:720px){.rest{grid-template-columns:1fr}}
 
-footer{margin-top:clamp(56px,8vw,96px);border-top:2px solid var(--ink);background:var(--sheet);padding:28px 0 40px;font-size:13px;color:var(--ink2)}
-footer .wrap{display:flex;justify-content:space-between;gap:16px 28px;flex-wrap:wrap}
-footer a{font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* ── 隔壁棚 ── */
+.shows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,28px);align-items:start}
+.show{background:var(--white);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.show > header{background:var(--d);color:var(--white);padding:12px 14px;border-bottom:3px solid var(--ink);position:relative;overflow:hidden}
+.show > header::after{content:"";position:absolute;right:-20px;top:-20px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.28) 38%,transparent 42%) 0 0/10px 10px}
+.show h3{font-size:22px;font-weight:900;line-height:1.2;position:relative}
+.show header span{font-family:var(--cond);font-weight:800;letter-spacing:.12em;font-size:13px;opacity:.85;position:relative}
+.show p.d{font-size:13.5px;color:var(--ink2);padding:12px 14px 4px}
+.mini{display:grid;grid-template-columns:46% minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border-top:2px dashed #cfc8b6}
+.mini:first-of-type{border-top:0}
+.mini .cover{border-width:2px;box-shadow:3px 3px 0 var(--ink)}
+.mini b{display:block;font-size:16.5px;font-weight:900;line-height:1.25}
+.mini small{display:block;font-size:12.5px;color:var(--ink2);margin:3px 0 6px}
+.mini u{text-decoration:none;font-weight:900;font-size:13px;border-bottom:2px solid var(--ink)}
+.mini:hover .cover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:5px 5px 0 var(--ink)}
+.mini:hover u{color:var(--red);border-color:var(--red)}
+@media (max-width:900px){.shows{grid-template-columns:1fr}}
+
+/* ── 頁尾 ── */
+footer{margin-top:clamp(64px,9vw,110px);background:var(--ink);color:var(--white);padding:clamp(36px,5vw,56px) 0 44px;position:relative;overflow:hidden}
+footer .big-t{font-size:clamp(54px,10vw,140px);font-weight:900;line-height:1;letter-spacing:-.03em;color:var(--paper)}
+footer .big-t span{color:var(--yellow)}
+footer .row{display:flex;justify-content:space-between;gap:14px 28px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;color:#bdbab0}
+footer a{color:var(--white);font-weight:900;border-bottom:2px solid var(--yellow)}
+footer .dd{position:absolute;right:6%;top:18%;width:min(22vw,220px);aspect-ratio:426/340;--m:url(img/dd_scribble.png);--c:var(--red);animation:wig 2.4s steps(2) infinite}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 .ln > span,.cut{transform:none;opacity:1}
+  .rv,.rv .num{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
 
-<header class="top">
+<div class="strip"><div class="wrap"><span>AFTER-HOURS PLAYER / VOL. 01</span><span class="r">A4 NOT WANNA WORK GAMES</span></div></div>
+<header class="mast">
   <div class="wrap">
-    <a class="brand" href="#top"><b>a4</b>不想上班 遊戲部</a>
+    <a class="logo" href="#top"><b>不想上班</b><span>A4 NOT WANNA<br>WORK GAMES</span></a>
     <nav>
-      <a href="#rank">作品</a>
-      <a class="opt" href="#depts">其他部門</a>
-      <a href="../">全部遊戲 ↗</a>
+      <a href="#rank">工時排行</a>
+      <a href="#shows">隔壁棚</a>
+      <a href="https://www.instagram.com/a4ux_reels/" target="_blank" rel="noopener">IG</a>
+      <a class="box" href="../">全部遊戲 ↗</a>
     </nav>
   </div>
 </header>
@@ -155,93 +248,101 @@ footer a{font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink)}
   <section class="hero">
     <div class="wrap">
       <div>
-        <div class="kicker">A4 NOT WANNA WORK · GAMES</div>
-        <h1>不想上班<small>遊戲入口</small><span class="seal" aria-hidden="true">a4</span></h1>
-        <p class="lead">小葵、阿傑、小米、Vivi 老闆和 Kevin 的上班族遊戲。點了就能玩，<mark>不用下載、不用登入</mark>，手機電腦都可以。</p>
+        <span class="flag">下班前，先上線。</span>
+        <h1><span class="ln"><span>今天也沒</span></span><span class="ln"><span>辭成，</span></span><span class="ln"><span><em>先玩一局。</em></span></span></h1>
+        <div class="en">CLOCK OUT. GAME ON.</div>
+        <p class="sub">免費玩・免下載・打開就開局，手機電腦都可以。</p>
+        <a class="cta" href="#rank">挑一款開玩 <i></i></a>
       </div>
-      <aside class="memo" aria-label="公文">
-        <h2>公　文</h2>
-        <dl>
-          <dt>收件</dt><dd>所有不想上班的人</dd>
-          <dt>主旨</dt><dd>不想上班系列，共 <b id="nA4">7</b> 款</dd>
-          <dt>排序</dt><dd>越前面，開發越花工夫</dd>
-          <dt>出品</dt><dd>a4 不想上班　<a class="mono" href="https://www.instagram.com/a4ux_reels/" target="_blank" rel="noopener" style="border-bottom:1.5px solid">@a4ux_reels ↗</a></dd>
-        </dl>
-      </aside>
+      <div class="collage" id="collage" aria-hidden="true">
+        <img class="sky" src="img/skyline.webp" alt="" data-depth="10">
+        <span class="dots"></span>
+        <span class="band"></span>
+        <span class="cut c-kevin" data-depth="14"><img src="img/kevin.webp" alt=""></span>
+        <span class="cut c-jie" data-depth="22"><img src="img/jie.webp" alt=""></span>
+        <span class="cut c-vivi" data-depth="18"><img src="img/vivi.webp" alt=""></span>
+        <span class="cut c-mi" data-depth="26"><img src="img/mi.webp" alt=""></span>
+        <span class="cut c-kui" data-depth="32"><img src="img/kui.webp" alt=""></span>
+        <span class="note n1">老闆不在，<br>快玩！</span>
+        <span class="dd d-arrow"></span>
+        <span class="dd d-spark"></span>
+        <span class="dd d-bang"></span>
+        <span class="dd d-star"></span>
+      </div>
     </div>
   </section>
+
+  <div class="ticker" aria-hidden="true"><div class="run" id="ticker"></div></div>
 
   <section class="sec" id="rank">
     <div class="wrap">
-      <div class="sec-h">
-        <h2><span class="mono">RANKED BY EFFORT</span>工時排行</h2>
-        <p>照開發花的工夫排：改版次數、開發天數、用到的美術和動作量都算進去。</p>
-      </div>
-      <div class="rank-big" id="big"></div>
-      <div class="rank-small" id="small"></div>
+      <div class="bar"><h2>工時排行<span class="cond">THE PLAYLIST</span></h2><p>越前面做越久・共 <b id="nA4">7</b> 款・點了就玩</p></div>
+      <div class="top3" id="top3"></div>
+      <div class="rest" id="rest"></div>
     </div>
   </section>
 
-  <section class="sec" id="depts">
+  <section class="sec" id="shows">
     <div class="wrap">
-      <div class="sec-h">
-        <h2><span class="mono">OTHER DEPARTMENTS</span>其他部門</h2>
-        <p>同一個工作室做的其他系列。</p>
-      </div>
-      <div class="depts" id="deptList"></div>
+      <div class="bar"><h2>隔壁棚也有事<span class="cond">OTHER SHOWS</span></h2><p>同一個工作室的其他系列</p></div>
+      <div class="shows" id="showList"></div>
     </div>
   </section>
 </main>
 
 <footer>
+  <span class="dd" aria-hidden="true"></span>
   <div class="wrap">
-    <div>遊戲存檔只存在你自己的瀏覽器。部分作品為粉絲創作，角色與名稱的權利屬於原權利人。</div>
-    <div><a href="../">看全部遊戲入口</a>　<a href="https://www.instagram.com/a4ux_reels/" target="_blank" rel="noopener">a4 不想上班 IG</a></div>
+    <div class="big-t">下班了，<br><span>明天再說。</span></div>
+    <div class="row">
+      <div>遊戲存檔只存在你自己的瀏覽器。部分作品為粉絲創作，角色與名稱的權利屬於原權利人。</div>
+      <div><a href="../">看全部遊戲入口</a>　<a href="https://www.instagram.com/a4ux_reels/" target="_blank" rel="noopener">a4 不想上班 IG</a></div>
+    </div>
   </div>
 </footer>
 
 <script>
-// 不想上班系列：陣列順序＝工時排行（越前面越花工夫），前三名用大列
+// 不想上班系列：陣列順序＝工時排行（越前面越花工夫），前三名大版面
 const GH = 'https://pokemonida99.github.io/';
 const A4 = [
   { repo: 'office-apocalypse', cover: 'apocalypse', title: '上班啟示錄', en: 'OFFICE APOCALYPSE',
-    genre: '3D 經營', ver: 'v0.19', platform: ['手機直式', '電腦'],
+    genre: '3D 經營', ver: 'v0.19', platform: '手機直式・電腦', side: '做最久的一款',
     tagline: '新人小葵報到第一天，什麼雜事都要做：煮咖啡、印文件、補貨、接電話，把破爛茶水間一路升級成產線。',
     how: ['拖曳畫面移動，把做好的咖啡、文件背去櫃台賣，再去綠框收錢', '踩金色格子升級設施、白色格子開新區域、粉紅格子請同事幫忙', '每季業績達標發獎金、每年辦尾牙，小葵從實習生一路往上升'] },
   { repo: 'office-basketball', cover: 'hoops', title: '下班先鬥牛', en: 'AFTER-WORK HOOPS',
-    genre: '3D 籃球', ver: 'v0.12', platform: ['手機直式／橫式', '電腦'],
+    genre: '3D 籃球', ver: 'v0.12', platform: '手機直式／橫式・電腦', side: '11 個人輪流上場',
     tagline: '上班族、香香籃球隊、山頂國小隊在頂樓或廟口球場打半場鬥牛，每個人都有自己的大招。',
     how: ['11 位角色挑 1～3 人組隊，1v1、2v2、3v3 都能打，2 分鐘或先到 21 分贏', '同一顆鍵攻守自動切換：按住投籃、綠區放開最準，招式接投籃可以連招', '不會玩先進教學關卡，練習場可以自己練投或一打一'] },
   { repo: 'a4-rpg-battle', cover: 'traveler', title: '上班旅人', en: 'OFFICE TRAVELER',
-    genre: 'HD-2D RPG', ver: 'v0.2', platform: ['手機', '電腦'], wip: '開發測試中',
+    genre: 'HD-2D RPG', ver: 'v0.2', platform: '手機・電腦', wip: '開發測試中', side: '還在開發，先別催！',
     tagline: '像素奇幻風的回合制戰鬥。五個上班族轉職成劍士、黑魔法師、白魔法師、坦克和公主，討伐奧客總經理。',
     how: ['小葵、阿傑、小米、Kevin、Vivi 五人一隊，用攻擊、技能、道具、防禦輪流出手', '攢滿 BP 放奧義，放大招時畫面斜切、露出角色認真的眼神', '小兵在場時總經理打不動，先清小兵、再把他打到破防'] },
   { repo: 'office-idle', cover: 'office', title: '不想上班！放置辦公室', en: 'IDLE OFFICE',
-    genre: '放置 RPG', ver: 'v1.4', platform: ['手機', '電腦'],
+    genre: '放置 RPG', ver: 'v1.4', platform: '手機・電腦', side: '掛著也會升級',
     tagline: '小葵、小米、阿傑和 Vivi 老闆打倒工作怪，帶大家準時下班。',
     how: ['點擊打怪、升級辦公室，週一到週五 5 章 50 關', '用履歷招募 100 位同事，組 3～5 人隊伍', '主線大約 30 分鐘，打完有無限的加班模式'] },
   { repo: 'office-sidescroller', cover: 'runner', title: '打卡衝衝衝', en: 'CLOCK-IN DASH',
-    genre: '橫向跑酷', ver: 'v0.1', platform: ['手機', '電腦'],
+    genre: '橫向跑酷', ver: 'v0.1', platform: '手機・電腦', side: '只要會跳和滑',
     tagline: '小葵 08:59 快遲到了，一路往右衝上樓打卡，別被踩 AI 平衡車的 Kevin 抓去開會。',
     how: ['只有兩個動作：點右半邊跳（空中再點二段跳）、點左半邊滑壘', '跳過紙箱和咖啡、滑過「這個用AI就好了」紅布條', '每 240 公尺一個打卡鐘，越跑越快'] },
   { repo: 'end-of-office-hours', cover: 'endhours', title: '上班時間的盡頭', en: 'THE END OF OFFICE HOURS',
-    genre: '3D 互動網頁', ver: '互動作品', platform: ['電腦優先'],
+    genre: '3D 互動網頁', ver: '互動作品', platform: '電腦優先', side: '撐到 18:00 有驚喜',
     tagline: '照你電腦時間倒數到 18:00 的 3D 辦公室。下班那一刻，時鐘化成夕陽，螢幕變成燈籠升空。',
     how: ['拖曳畫面環顧四周，滾輪或按住空白鍵推進時間', '點一塊螢幕，讓那個座位提早下班', '座位會冒出 70 句彩蛋台詞，結尾收集冊記下你聽過哪些'] },
   { repo: 'ux-millionaire', cover: 'ux', title: 'UX 百萬大富翁', en: 'UX MILLIONAIRE',
-    genre: '益智問答', ver: '完整版', platform: ['手機', '電腦'],
+    genre: '益智問答', ver: '完整版', platform: '手機・電腦', side: 'VIVI 主持，答完有解說',
     tagline: '像素風的百萬大富翁，主持人 VIVI 考你 UX 商業思維。',
     how: ['連續答對 15 題，獎金從 NT$100 一路到 NT$1,000,000', '三種救援：50:50、打電話給同事、問現場觀眾', '答完每題都有解說'] },
 ];
 
-// 其他部門：照使用者指定的順序（紅分子、黃泉燒肉店、山頂國小）
-const DEPTS = [
+// 隔壁棚：照使用者指定的順序（紅分子、黃泉燒肉店、山頂國小）
+const SHOWS = [
   { name: '紅分子 HJAEC', en: 'HJAEC', color: '#c4161c', desc: '以汽車鍍膜品牌紅分子為主題的洗車小遊戲。',
     games: [
       { repo: 'hjaec-fighter', cover: 'hjaec', title: '亮車快打', sub: '街機動作：把髒車打到發亮' },
       { repo: 'hjaec-beads', cover: 'beads', title: '水珠聚一顆', sub: '節奏小品：跟著拍子把水珠聚成一顆' },
     ] },
-  { name: '黃泉燒肉店', en: 'YELLOW SPRINGS BBQ', color: '#7a1a14', desc: '棲渺拾光《黃泉燒肉店》角色的粉絲作品。',
+  { name: '黃泉燒肉店', en: 'YELLOW SPRINGS BBQ', color: '#6e1a14', desc: '棲渺拾光《黃泉燒肉店》角色的粉絲作品。',
     games: [
       { repo: 'huangquan-puzzle', cover: 'huangquan', title: '黃泉燒肉店 轉珠', sub: '轉珠 RPG：角色卡、主線關卡、托夢照相館' },
     ] },
@@ -258,35 +359,55 @@ const DEPTS = [
   const url = g => GH + g.repo + '/';
   const ext = 'target="_blank" rel="noopener"';
   const no = i => String(i + 1).padStart(2, '0');
-  const cover = (g, eager) => `<a class="cover" href="${url(g)}" ${ext} aria-label="玩 ${esc(g.title)}">
-      ${g.wip ? `<span class="stamp">${esc(g.wip)}</span>` : ''}
-      <img src="../img/cover/${g.cover}.webp" alt="${esc(g.title)} 封面" loading="${eager ? 'eager' : 'lazy'}" decoding="async"></a>`;
-  const tags = g => `<div class="tags"><span class="tag k">${esc(g.genre)}</span><span class="tag v">${esc(g.ver)}</span>${g.wip ? `<span class="tag r">${esc(g.wip)}</span>` : ''}${g.platform.map(p => `<span class="tag">${esc(p)}</span>`).join('')}</div>`;
-  const how = g => `<ol class="how">${g.how.map(h => `<li>${esc(h)}</li>`).join('')}</ol>`;
-  const play = g => `<a class="btn" href="${url(g)}" ${ext}>打卡開玩 <span class="mono">→</span></a>`;
+  const img = (g, eager) => `<img src="../img/cover/${g.cover}.webp" alt="${esc(g.title)} 封面" loading="${eager ? 'eager' : 'lazy'}" decoding="async">`;
+  const cover = (g, eager) => `<a class="cover" href="${url(g)}" ${ext} aria-label="玩 ${esc(g.title)}">${g.wip ? `<span class="wip">${esc(g.wip)}</span>` : ''}${img(g, eager)}</a>`;
+  const meta = g => `<div class="meta"><span class="chip">${esc(g.genre)}</span><span class="chip y">${esc(g.ver)}</span>${g.wip ? `<span class="chip r">${esc(g.wip)}</span>` : ''}<small>${esc(g.platform)}</small></div>`;
+  const how = g => `<details class="how"><summary>怎麼玩</summary><ol>${g.how.map(h => `<li>${esc(h)}</li>`).join('')}</ol></details>`;
+  const play = g => `<a class="play" href="${url(g)}" ${ext}>${g.wip ? '先玩試玩版' : '立即開玩'} <i></i></a>`;
 
-  $('#big').innerHTML = A4.slice(0, 3).map((g, i) => `<article class="row">
-      <div class="no"><small>NO.</small>${no(i)}</div>
-      ${cover(g, i < 2)}
-      <div class="info">${tags(g)}<h3>${esc(g.title)}</h3><div class="en">${esc(g.en)}</div><p class="tl">${esc(g.tagline)}</p>${how(g)}${play(g)}</div>
+  $('#top3').innerHTML = A4.slice(0, 3).map((g, i) => `<article class="big rv">
+      <div class="num" aria-hidden="true">${no(i)}</div>
+      ${cover(g, i === 0)}
+      <div class="info">${meta(g)}<h3>${esc(g.title)}</h3><div class="en">${esc(g.en)}</div>
+        <p class="tl">${esc(g.tagline)}</p>${how(g)}
+        <div class="acts">${play(g)}<span class="side">${esc(g.side)}</span></div></div>
     </article>`).join('');
 
-  $('#small').innerHTML = A4.slice(3).map((g, k) => `<article class="card">
+  $('#rest').innerHTML = A4.slice(3).map((g, k) => `<article class="sm rv">
+      <div class="num" aria-hidden="true">${no(k + 3)}</div>
       ${cover(g)}
-      <div class="head"><span class="no">${no(k + 3)}</span><h3>${esc(g.title)}</h3></div>
-      <div class="en">${esc(g.en)}</div>
-      ${tags(g)}<p class="tl">${esc(g.tagline)}</p>${how(g)}${play(g)}
+      <div class="body">${meta(g)}<h3>${esc(g.title)}</h3><p class="tl">${esc(g.tagline)}</p>${how(g)}
+        <div class="acts">${play(g)}<span class="side">${esc(g.side)}</span></div></div>
     </article>`).join('');
 
-  $('#deptList').innerHTML = DEPTS.map(d => `<section class="dept" style="--d:${d.color}">
-      <header><h3>${esc(d.name)}</h3><span>${esc(d.en)}</span></header>
-      <p class="d">${esc(d.desc)}</p>
-      ${d.games.map(g => `<a class="mini" href="${url(g)}" ${ext}>
-        ${cover(g).replace(/^<a class="cover"[^>]*>/, '<span class="cover">').replace(/<\/a>$/, '</span>')}
-        <span><b>${esc(g.title)}</b><small>${esc(g.sub)}</small><span class="go">開玩 →</span></span></a>`).join('')}
+  $('#showList').innerHTML = SHOWS.map(s => `<section class="show rv" style="--d:${s.color}">
+      <header><h3>${esc(s.name)}</h3><span>${esc(s.en)}</span></header>
+      <p class="d">${esc(s.desc)}</p>
+      ${s.games.map(g => `<a class="mini" href="${url(g)}" ${ext}><span class="cover">${img(g)}</span>
+        <span><b>${esc(g.title)}</b><small>${esc(g.sub)}</small><u>開玩 →</u></span></a>`).join('')}
     </section>`).join('');
 
+  // 跑馬燈：內容放兩份，捲到一半剛好接回開頭
+  const t = A4.map(g => g.title + (g.wip ? '（' + g.wip + '）' : '')).concat(['今天也沒辭成', '先玩一局']);
+  const once = t.map(x => `<span>${esc(x)}</span>`).join('');
+  $('#ticker').innerHTML = once + once;
   $('#nA4').textContent = A4.length;
+
+  // 捲動進場
+  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.rv').forEach(el => el.classList.add('in')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // 首屏拼貼視差：電腦跟滑鼠、手機跟捲動
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const box = $('#collage'), layers = [...box.querySelectorAll('[data-depth]')];
+  let mx = 0, my = 0, sy = 0, raf = 0;
+  const draw = () => { raf = 0; layers.forEach(el => { const d = +el.dataset.depth; el.style.translate = `${(mx * d).toFixed(1)}px ${(my * d - sy * d * .04).toFixed(1)}px`; }); };
+  const ask = () => { if (!raf) raf = requestAnimationFrame(draw); };
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    addEventListener('pointermove', e => { mx = (e.clientX / innerWidth - .5) * .9; my = (e.clientY / innerHeight - .5) * .6; ask(); }, { passive: true });
+  }
+  addEventListener('scroll', () => { sy = Math.min(scrollY, 900) / 100; ask(); }, { passive: true });
 })();
 </script>
 </body>
